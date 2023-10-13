@@ -4,12 +4,18 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="我的第一篇博客文章, Hexo">
-    <meta name="description" content="第一章内容
+    <meta name="keywords" content="pandas常用函数和参数, Hexo">
+    <meta name="description" content="读写文件
+pd.read_csv(path, usecols&amp;#x3D;None, encoding&amp;#x3D;None)
 
-第二章内容
+path: 读取的文件位置，必选参数。
 
-参考文献">
+usecols: 读取指定列，默认为None。
+
+使用示例
+源文件
+
+选">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -21,7 +27,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>我的第一篇博客文章 | Hexo</title>
+    <title>pandas常用函数和参数 | Hexo</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -338,12 +344,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/17.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/22.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">我的第一篇博客文章</h1>
+                    <h1 class="description center-align post-title">pandas常用函数和参数</h1>
                 </div>
             </div>
         </div>
@@ -365,12 +371,29 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">No tag</span>
-                          </div>
+                    <div class="article-tag">
+                        
+                            <a href="/tags/python/">
+                                <span class="chip bg-color">python</span>
+                            </a>
+                        
+                    </div>
                     
                 </div>
                 <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/python/" class="post-category">
+                                python
+                            </a>
+                        
+                            <a href="/categories/python/pandas/" class="post-category">
+                                pandas
+                            </a>
+                        
+                    </div>
                     
                 </div>
             </div>
@@ -379,7 +402,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2023-10-12
+                    2023-10-13
                 </div>
                 
 
@@ -400,11 +423,30 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="第一章"><a href="#第一章" class="headerlink" title="第一章"></a>第一章</h2><p>内容</p>
-<hr>
-<h2 id="第二章"><a href="#第二章" class="headerlink" title="第二章"></a>第二章</h2><p>内容</p>
-<hr>
-<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2>
+                <h2 id="读写文件"><a href="#读写文件" class="headerlink" title="读写文件"></a>读写文件</h2><ol>
+<li><p>pd.read_csv(path, usecols&#x3D;None, encoding&#x3D;None)</p>
+<ul>
+<li><p>path: 读取的文件位置，必选参数。</p>
+</li>
+<li><p>usecols: 读取指定列，默认为None。</p>
+<ul>
+<li><p>使用示例</p>
+<p>源文件</p>
+<p><img src="/./../../picture/image-20231013165207484.png" alt="image-20231013165207484"></p>
+<p>选取1-4列</p>
+<p><img src="/./../../picture/image-20231013165050986.png" alt="image-20231013165050986"></p>
+<p><img src="/./../../picture/image-20231013165246993.png" alt="image-20231013165246993"></p>
+<p>跳过Time列</p>
+<p><img src="/./../../picture/image-20231013165351340.png" alt="image-20231013165351340"></p>
+</li>
+</ul>
+</li>
+<li><p>encoding: 文件编码方式，默认为’UTF-8‘</p>
+</li>
+</ul>
+</li>
+</ol>
+
                 
             </div>
             <hr/>
@@ -430,7 +472,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://example.com/2023/10/12/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2%E6%96%87%E7%AB%A0/">http://example.com/2023/10/12/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2%E6%96%87%E7%AB%A0/</a>
+                    <a href="http://example.com/2023/10/13/pandas%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0%E5%92%8C%E5%8F%82%E6%95%B0/">http://example.com/2023/10/13/pandas%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0%E5%92%8C%E5%8F%82%E6%95%B0/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -467,7 +509,11 @@
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            <span class="chip bg-color">No tag</span>
+                            
+                                <a href="/tags/python/">
+                                    <span class="chip bg-color">python</span>
+                                </a>
+                            
                         </div>
                     
                 </div>
@@ -544,9 +590,10 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+                <i class="far fa-dot-circle"></i>&nbsp;Current
+            </div>
             <div class="card">
                 <a href="/2023/10/13/pandas%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0%E5%92%8C%E5%8F%82%E6%95%B0/">
                     <div class="card-image">
@@ -564,9 +611,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2023-10-13
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-10-13
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -583,6 +630,7 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -601,13 +649,13 @@
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2023/10/12/hello-world/">
+                <a href="/2023/10/12/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2%E6%96%87%E7%AB%A0/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="Hello World">
+                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="我的第一篇博客文章">
                         
-                        <span class="card-title">Hello World</span>
+                        <span class="card-title">我的第一篇博客文章</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
