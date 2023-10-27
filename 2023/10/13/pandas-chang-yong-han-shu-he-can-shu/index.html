@@ -286,14 +286,14 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-10-14
+                    2023-10-27
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    3.1k
+                    3.5k
                 </div>
                 
 
@@ -666,7 +666,51 @@ Oregon <span class="token operator">-</span><span class="token number">1.0</span
 </li>
 </ul>
 <hr>
-<h3 id="五、处理缺失值"><a href="#五、处理缺失值" class="headerlink" title="五、处理缺失值"></a>五、处理缺失值</h3><h4 id="1-过滤缺失值"><a href="#1-过滤缺失值" class="headerlink" title="1. 过滤缺失值"></a>1. 过滤缺失值</h4><p><strong>DataFrame.dropna(axis&#x3D;0, inplace&#x3D;False, how&#x3D;None)</strong></p>
+<h3 id="五、过滤子集"><a href="#五、过滤子集" class="headerlink" title="五、过滤子集"></a>五、过滤子集</h3><ul>
+<li><p>使用示例</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">import</span> pandas <span class="token keyword">as</span> pd
+<span class="token operator">>></span><span class="token operator">></span> df <span class="token operator">=</span> pd<span class="token punctuation">.</span>DataFrame<span class="token punctuation">(</span><span class="token punctuation">&#123;</span><span class="token string">'Time'</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'2020-09-01'</span><span class="token punctuation">,</span> <span class="token string">'2020-09-01'</span><span class="token punctuation">,</span> <span class="token string">'2020-09-01'</span><span class="token punctuation">,</span> <span class="token string">'2020-09-01'</span><span class="token punctuation">,</span> <span class="token string">'2020-09-01'</span><span class="token punctuation">,</span> <span class="token string">'2020-09-01'</span><span class="token punctuation">,</span> <span class="token string">'2020-09-01'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>                    <span class="token string">'stock'</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'000009.SZ'</span><span class="token punctuation">,</span> <span class="token string">'000012.SZ'</span><span class="token punctuation">,</span> <span class="token string">'000021.SZ'</span><span class="token punctuation">,</span> <span class="token string">'000027.SZ'</span><span class="token punctuation">,</span> <span class="token string">'000028.SZ'</span><span class="token punctuation">,</span> <span class="token string">'000031.SZ'</span><span class="token punctuation">,</span> <span class="token string">'000039.SZ'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>                    <span class="token string">'OPEN'</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token number">7.65</span><span class="token punctuation">,</span> <span class="token number">5.86</span><span class="token punctuation">,</span> <span class="token number">25.32</span><span class="token punctuation">,</span> <span class="token number">5.73</span><span class="token punctuation">,</span> <span class="token number">54.18</span><span class="token punctuation">,</span> <span class="token number">5.48</span><span class="token punctuation">,</span> <span class="token number">8.79</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>                    <span class="token string">'HIGH'</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token number">7.85</span><span class="token punctuation">,</span> <span class="token number">5.86</span><span class="token punctuation">,</span> <span class="token number">25.8</span><span class="token punctuation">,</span> <span class="token number">5.73</span><span class="token punctuation">,</span> <span class="token number">54.79</span><span class="token punctuation">,</span> <span class="token number">5.52</span><span class="token punctuation">,</span> <span class="token number">8.8</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>                    <span class="token string">'LOW'</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token number">7.44</span><span class="token punctuation">,</span> <span class="token number">5.73</span><span class="token punctuation">,</span> <span class="token number">25.15</span><span class="token punctuation">,</span> <span class="token number">5.64</span><span class="token punctuation">,</span> <span class="token number">53.14</span><span class="token punctuation">,</span> <span class="token number">5.44</span><span class="token punctuation">,</span> <span class="token number">8.64</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>                    <span class="token string">'CLOSE'</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token number">7.72</span><span class="token punctuation">,</span> <span class="token number">5.83</span><span class="token punctuation">,</span> <span class="token number">25.45</span><span class="token punctuation">,</span> <span class="token number">5.7</span><span class="token punctuation">,</span> <span class="token number">53.7</span><span class="token punctuation">,</span> <span class="token number">5.5</span><span class="token punctuation">,</span> <span class="token number">8.75</span><span class="token punctuation">]</span><span class="token punctuation">&#125;</span><span class="token punctuation">,</span> index<span class="token operator">=</span><span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">7</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token operator">>></span><span class="token operator">></span> df
+         Time      stock   OPEN   HIGH    LOW  CLOSE
+<span class="token number">0</span>  <span class="token number">2020</span><span class="token operator">-</span><span class="token number">09</span><span class="token operator">-</span><span class="token number">01</span>  <span class="token number">000009</span><span class="token punctuation">.</span>SZ   <span class="token number">7.65</span>   <span class="token number">7.85</span>   <span class="token number">7.44</span>   <span class="token number">7.72</span>
+<span class="token number">1</span>  <span class="token number">2020</span><span class="token operator">-</span><span class="token number">09</span><span class="token operator">-</span><span class="token number">01</span>  <span class="token number">000012</span><span class="token punctuation">.</span>SZ   <span class="token number">5.86</span>   <span class="token number">5.86</span>   <span class="token number">5.73</span>   <span class="token number">5.83</span>
+<span class="token number">2</span>  <span class="token number">2020</span><span class="token operator">-</span><span class="token number">09</span><span class="token operator">-</span><span class="token number">01</span>  <span class="token number">000021</span><span class="token punctuation">.</span>SZ  <span class="token number">25.32</span>  <span class="token number">25.80</span>  <span class="token number">25.15</span>  <span class="token number">25.45</span>
+<span class="token number">3</span>  <span class="token number">2020</span><span class="token operator">-</span><span class="token number">09</span><span class="token operator">-</span><span class="token number">01</span>  <span class="token number">000027</span><span class="token punctuation">.</span>SZ   <span class="token number">5.73</span>   <span class="token number">5.73</span>   <span class="token number">5.64</span>   <span class="token number">5.70</span>
+<span class="token number">4</span>  <span class="token number">2020</span><span class="token operator">-</span><span class="token number">09</span><span class="token operator">-</span><span class="token number">01</span>  <span class="token number">000028</span><span class="token punctuation">.</span>SZ  <span class="token number">54.18</span>  <span class="token number">54.79</span>  <span class="token number">53.14</span>  <span class="token number">53.70</span>
+<span class="token number">5</span>  <span class="token number">2020</span><span class="token operator">-</span><span class="token number">09</span><span class="token operator">-</span><span class="token number">01</span>  <span class="token number">000031</span><span class="token punctuation">.</span>SZ   <span class="token number">5.48</span>   <span class="token number">5.52</span>   <span class="token number">5.44</span>   <span class="token number">5.50</span>
+<span class="token number">6</span>  <span class="token number">2020</span><span class="token operator">-</span><span class="token number">09</span><span class="token operator">-</span><span class="token number">01</span>  <span class="token number">000039</span><span class="token punctuation">.</span>SZ   <span class="token number">8.79</span>   <span class="token number">8.80</span>   <span class="token number">8.64</span>   <span class="token number">8.75</span>
+
+<span class="token comment"># 计算表征Series(DataFrame一列)等于、大于或小于给定值</span>
+<span class="token operator">>></span><span class="token operator">></span> df<span class="token punctuation">[</span>df<span class="token punctuation">[</span><span class="token string">'stock'</span><span class="token punctuation">]</span><span class="token operator">==</span><span class="token string">'000027.SZ'</span><span class="token punctuation">]</span>
+         Time      stock  OPEN  HIGH   LOW  CLOSE
+<span class="token number">3</span>  <span class="token number">2020</span><span class="token operator">-</span><span class="token number">09</span><span class="token operator">-</span><span class="token number">01</span>  <span class="token number">000027</span><span class="token punctuation">.</span>SZ  <span class="token number">5.73</span>  <span class="token number">5.73</span>  <span class="token number">5.64</span>    <span class="token number">5.7</span>
+<span class="token operator">>></span><span class="token operator">></span> df<span class="token punctuation">[</span>df<span class="token punctuation">[</span><span class="token string">'stock'</span><span class="token punctuation">]</span><span class="token operator">></span><span class="token string">'000027.SZ'</span><span class="token punctuation">]</span>
+         Time      stock   OPEN   HIGH    LOW  CLOSE
+<span class="token number">4</span>  <span class="token number">2020</span><span class="token operator">-</span><span class="token number">09</span><span class="token operator">-</span><span class="token number">01</span>  <span class="token number">000028</span><span class="token punctuation">.</span>SZ  <span class="token number">54.18</span>  <span class="token number">54.79</span>  <span class="token number">53.14</span>  <span class="token number">53.70</span>
+<span class="token number">5</span>  <span class="token number">2020</span><span class="token operator">-</span><span class="token number">09</span><span class="token operator">-</span><span class="token number">01</span>  <span class="token number">000031</span><span class="token punctuation">.</span>SZ   <span class="token number">5.48</span>   <span class="token number">5.52</span>   <span class="token number">5.44</span>   <span class="token number">5.50</span>
+<span class="token number">6</span>  <span class="token number">2020</span><span class="token operator">-</span><span class="token number">09</span><span class="token operator">-</span><span class="token number">01</span>  <span class="token number">000039</span><span class="token punctuation">.</span>SZ   <span class="token number">8.79</span>   <span class="token number">8.80</span>   <span class="token number">8.64</span>   <span class="token number">8.75</span>
+<span class="token operator">>></span><span class="token operator">></span> df<span class="token punctuation">[</span>df<span class="token punctuation">[</span><span class="token string">'stock'</span><span class="token punctuation">]</span><span class="token operator">&lt;</span><span class="token string">'000027.SZ'</span><span class="token punctuation">]</span>
+         Time      stock   OPEN   HIGH    LOW  CLOSE
+<span class="token number">0</span>  <span class="token number">2020</span><span class="token operator">-</span><span class="token number">09</span><span class="token operator">-</span><span class="token number">01</span>  <span class="token number">000009</span><span class="token punctuation">.</span>SZ   <span class="token number">7.65</span>   <span class="token number">7.85</span>   <span class="token number">7.44</span>   <span class="token number">7.72</span>
+<span class="token number">1</span>  <span class="token number">2020</span><span class="token operator">-</span><span class="token number">09</span><span class="token operator">-</span><span class="token number">01</span>  <span class="token number">000012</span><span class="token punctuation">.</span>SZ   <span class="token number">5.86</span>   <span class="token number">5.86</span>   <span class="token number">5.73</span>   <span class="token number">5.83</span>
+<span class="token number">2</span>  <span class="token number">2020</span><span class="token operator">-</span><span class="token number">09</span><span class="token operator">-</span><span class="token number">01</span>  <span class="token number">000021</span><span class="token punctuation">.</span>SZ  <span class="token number">25.32</span>  <span class="token number">25.80</span>  <span class="token number">25.15</span>  <span class="token number">25.45</span>
+
+<span class="token comment"># 计算表征Series(DataFrame一列)包含于传入序列</span>
+<span class="token operator">>></span><span class="token operator">></span> choice <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'000009.SZ'</span><span class="token punctuation">,</span> <span class="token string">'000012.SZ'</span><span class="token punctuation">,</span> <span class="token string">'000027.SZ'</span><span class="token punctuation">,</span> <span class="token string">'000039.SZ'</span><span class="token punctuation">]</span>
+<span class="token operator">>></span><span class="token operator">></span> df<span class="token punctuation">[</span>df<span class="token punctuation">[</span><span class="token string">'stock'</span><span class="token punctuation">]</span><span class="token punctuation">.</span>isin<span class="token punctuation">(</span>choice<span class="token punctuation">)</span><span class="token punctuation">]</span>
+         Time      stock  OPEN  HIGH   LOW  CLOSE
+<span class="token number">0</span>  <span class="token number">2020</span><span class="token operator">-</span><span class="token number">09</span><span class="token operator">-</span><span class="token number">01</span>  <span class="token number">000009</span><span class="token punctuation">.</span>SZ  <span class="token number">7.65</span>  <span class="token number">7.85</span>  <span class="token number">7.44</span>   <span class="token number">7.72</span>
+<span class="token number">1</span>  <span class="token number">2020</span><span class="token operator">-</span><span class="token number">09</span><span class="token operator">-</span><span class="token number">01</span>  <span class="token number">000012</span><span class="token punctuation">.</span>SZ  <span class="token number">5.86</span>  <span class="token number">5.86</span>  <span class="token number">5.73</span>   <span class="token number">5.83</span>
+<span class="token number">3</span>  <span class="token number">2020</span><span class="token operator">-</span><span class="token number">09</span><span class="token operator">-</span><span class="token number">01</span>  <span class="token number">000027</span><span class="token punctuation">.</span>SZ  <span class="token number">5.73</span>  <span class="token number">5.73</span>  <span class="token number">5.64</span>   <span class="token number">5.70</span>
+<span class="token number">6</span>  <span class="token number">2020</span><span class="token operator">-</span><span class="token number">09</span><span class="token operator">-</span><span class="token number">01</span>  <span class="token number">000039</span><span class="token punctuation">.</span>SZ  <span class="token number">8.79</span>  <span class="token number">8.80</span>  <span class="token number">8.64</span>   <span class="token number">8.75</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+</ul>
+<hr>
+<h3 id="六、处理缺失值"><a href="#六、处理缺失值" class="headerlink" title="六、处理缺失值"></a>六、处理缺失值</h3><h4 id="1-过滤缺失值"><a href="#1-过滤缺失值" class="headerlink" title="1. 过滤缺失值"></a>1. 过滤缺失值</h4><p><strong>DataFrame.dropna(axis&#x3D;0, inplace&#x3D;False, how&#x3D;None)</strong></p>
 <ul>
 <li><p>axis: 过滤的轴向，默认 axis&#x3D;0(行)</p>
 </li>
@@ -859,7 +903,7 @@ Oregon <span class="token operator">-</span><span class="token number">1.0</span
 <span class="token number">3</span>  NaN  <span class="token number">2.3</span>  <span class="token number">3.2</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
 </ul>
 <hr>
-<h3 id="六、重命名轴索引"><a href="#六、重命名轴索引" class="headerlink" title="六、重命名轴索引"></a>六、重命名轴索引</h3><p><strong>DataFrame.rename(index&#x3D;None, columns&#x3D;None, inplace&#x3D;False)</strong></p>
+<h3 id="七、重命名轴索引"><a href="#七、重命名轴索引" class="headerlink" title="七、重命名轴索引"></a>七、重命名轴索引</h3><p><strong>DataFrame.rename(index&#x3D;None, columns&#x3D;None, inplace&#x3D;False)</strong></p>
 <ul>
 <li><p>index: 要修改的行索引</p>
 </li>
@@ -1078,35 +1122,48 @@ e     <span class="token number">6</span>         <span class="token number">7</
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+                本篇&nbsp;<i class="far fa-dot-circle"></i>
             </div>
             <div class="card">
-                <a href="/2023/10/12/hello-world/">
+                <a href="/2023/10/13/pandas-chang-yong-han-shu-he-can-shu/">
                     <div class="card-image">
                         
                         
-                        <img src="https://cdn.jsdelivr.net/gh/smz2233/smz2233.github.io/medias/featureimages/12.jpg" class="responsive-img" alt="Hello World">
+                        <img src="https://cdn.jsdelivr.net/gh/smz2233/smz2233.github.io/medias/featureimages/22.jpg" class="responsive-img" alt="pandas常用函数和参数">
                         
-                        <span class="card-title">Hello World</span>
+                        <span class="card-title">pandas常用函数和参数</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
+                            作者常用pandas函数和参数
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-10-12
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-10-13
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            比目。
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/python/" class="post-category">
+                                    python
+                                </a>
+                            
                             
                         </span>
                     </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/pandas/">
+                        <span class="chip bg-color">pandas</span>
+                    </a>
+                    
                 </div>
                 
             </div>
@@ -1302,7 +1359,7 @@ e     <span class="token number">6</span>         <span class="token number">7</
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">4k</span>
+                        class="white-color">4.4k</span>
             
             
             
